@@ -1,7 +1,7 @@
 /* Instruments */
 import { createAppAsyncThunk } from '@/lib/redux/createAppAsyncThunk'
 import { fetchIdentityCount } from './fetchIdentityCount'
-import { selectCount } from './selectors'
+import { selectCount } from '../selectors'
 import { counterSlice } from './counterSlice'
 import type { ReduxThunkAction } from '@/lib/redux'
 
