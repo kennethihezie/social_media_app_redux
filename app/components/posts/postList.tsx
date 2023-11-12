@@ -1,8 +1,8 @@
 'use client'
 
-import { selectPosts } from "@/lib/redux"
 import { useSelector } from "react-redux"
 import Post from "../post/post"
+import { selectPosts } from "@/lib/redux/slices/selectors"
 
 
 export const PostList = () => {

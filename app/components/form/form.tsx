@@ -12,10 +12,14 @@ export interface IFormInput {
 
 const Form = () => {
     const router = useRouter()
+    const dispatch = useDispatch()
+
     //Using react forms
     const { register, handleSubmit } = useForm<IFormInput>()
+    
     const onSubmit: SubmitHandler<IFormInput> = (data) => {
-       const {postTitle, postContent } = data
+       const { postTitle, postContent } = data
+      
        const post: PostSliceState = {
         id: nanoid(),
         title: postTitle,
@@ -26,11 +30,10 @@ const Form = () => {
 
       router.back()
     }
-    const dispatch = useDispatch()
     
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}  className="space-y-4 flex flex-col">
+        <form onSubmit={ handleSubmit(onSubmit) }  className="space-y-4 flex flex-col">
             <Input label='postTitle' register={register} required />
 
             <Input label='postContent' register={register} required />
