@@ -26,6 +26,6 @@ export const postSlice = createSlice({
     reducers: {
         postAdded: (state, action: PayloadAction<PostSliceState>) => {
            state.push(action.payload)
-        }
+        },
     }
 })

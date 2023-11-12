@@ -11,6 +11,20 @@ export interface IFormInput {
 }
 
 const Form = () => {
+   /**
+    * Using RTK Query for api calls
+    * Mutation hooks return an array with two values:
+    * The first value is a "trigger function". When called, it makes the request to 
+    * the server, with whatever argument you provide. This is effectively like a thunk that 
+    * has already been wrapped to immediately dispatch itself.
+    * The second value is an object with metadata about the current in-progress request, if any. 
+    * This includes an isLoading flag to indicate if a request is in-progress.
+    * const [addNewPost, { isLoading }] = useAddNewPostMutation()
+    * we call addNewPost with the initial post object. This returns a special Promise with a .unwrap()
+    *  method, and we can await addNewPost().unwrap() to handle any potential errors with a standard
+    *  try/catch block.
+    */
+
     const router = useRouter()
     const dispatch = useDispatch()
 
@@ -18,6 +32,11 @@ const Form = () => {
     const { register, handleSubmit } = useForm<IFormInput>()
     
     const onSubmit: SubmitHandler<IFormInput> = (data) => {
+       /**
+        * Post data with RTK Query
+        * await addNewPost(data).unwrap()
+        */
+
        const { postTitle, postContent } = data
       
        const post: PostSliceState = {

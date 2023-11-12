@@ -12,6 +12,8 @@ import { middleware } from './middleware'
 
 export const reduxStore = configureStore({
   reducer,
+  // the API slice generates a custom middleware that needs to be added to the store
+  // This middleware must be added as well - it manages cache lifetimes and expiration.
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware().concat(middleware)
   },
